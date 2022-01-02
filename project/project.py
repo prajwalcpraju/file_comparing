@@ -1,4 +1,13 @@
-groups=[grp1,grp2,grp3,grp4,grp5]
+import os
+path="C:/Users/prajw/project/groups/"
+file=os.listdir("C:/Users/prajw/project/groups/")
+
+groups=[]
+for i in file:
+    if i.endswith(".txt"):
+        with open(path+i,"r") as f:
+            b=f.read()
+            groups.append(b)
 grp_name=['group1','group2','group3','group4','group5']
 
 import nltk
@@ -46,6 +55,8 @@ for i,items in enumerate(final_groups):
 
 avg=(max(rating)-min(rating))/2
 for i in range(5):
+    if(rating[i]==max(rating)):
+        print("maximum matching with "+grp_name[i])
     if(rating[i]>avg):
         print("Rating of "+grp_name[i]+" is : 3")
     else :
@@ -53,10 +64,4 @@ for i in range(5):
             print("Rating of "+grp_name[i]+" is : 2")
         else:
             print("Rating of "+grp_name[i]+" is : 1")
-            
-output is :
-Rating of group1 is : 3
-Rating of group2 is : 2
-Rating of group3 is : 1
-Rating of group4 is : 3
-Rating of group5 is : 1
+    
